@@ -1,8 +1,16 @@
 from django.db import models
 
 # Create your models here.
-class Filme(models.Model):
-    pass
-
 class Cliente(models.Model):
-    pass
+    id = models.AutoField(primary_key=True)
+    nome = models.TextField()
+
+class Filme(models.Model):
+    id = models.AutoField(primary_key=True)
+    nome = models.TextField()
+    preco = models.FloatField()
+
+class Aluguel(models.Model):
+    id = models.AutoField(primary_key=True)
+    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    id_filme = models.ForeignKey(Filme, on_delete=models.CASCADE)
